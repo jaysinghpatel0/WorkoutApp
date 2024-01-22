@@ -19,6 +19,8 @@ class ExerciseActivity : AppCompatActivity() {
     private var exerciseList : ArrayList<ExerciseModel>? = null
     private var currentExercisePosition = -1
 
+    private var exerciseTimerDuration:Long = 30
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -109,7 +111,7 @@ class ExerciseActivity : AppCompatActivity() {
             }
             override fun onFinish() {
                 if (currentExercisePosition <exerciseList?.size!! - 1){
-                    setupExerciseView()
+                    setupRestView()
                 }else{
                     Toast.makeText(
                         this@ExerciseActivity,
