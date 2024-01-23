@@ -1,5 +1,6 @@
 package com.example.a10minutesworkout
 
+import android.app.Dialog
 import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
@@ -12,6 +13,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a10minutesworkout.databinding.ActivityExerciseBinding
+import com.example.a10minutesworkout.databinding.DialogCustomBackConfirmationBinding
 import java.util.Locale
 
 class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
@@ -48,7 +50,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
         binding?.toolbarExercise?.setNavigationOnClickListener {
-            onBackPressed()
+            customDialogForBackButton()
         }
 
         exerciseList = Constants.defaultExerciseList()
@@ -59,6 +61,27 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         setupRestView()
         setupExerciseStatusRecyclerView()
 
+    }
+
+    override fun onBackPressed(){
+        customDialogForBackButton()
+        //super.onBackPressed()
+    }
+
+    private fun customDialogForBackButton(){
+        val customDialog = Dialog(this)
+        val dialogBinding = DialogCustomBackConfirmationBinding.inflate(layoutInflater)
+        customDialog.setContentView(dialogBinding.root)
+        customDialog.setCanceledOnTouchOutside(false)
+        dialogBinding.btnYes.setOnClickListener{
+            this@ExerciseActivity.finish()
+            customDialog.dismiss()
+        }
+        dialogBinding.btnNo.setOnClickListener{
+            customDialog.dismiss()
+        }
+
+        customDialog.show()
     }
 
     private fun setupExerciseStatusRecyclerView(){
