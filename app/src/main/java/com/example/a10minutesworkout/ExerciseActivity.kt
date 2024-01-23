@@ -64,6 +64,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     }
 
     override fun onBackPressed(){
+        super.onBackPressed()
         customDialogForBackButton()
         //super.onBackPressed()
     }
