@@ -16,6 +16,19 @@
         android:layout_width="match_parent"
         android:layout_height="220dp" />
 
+    <TextView
+        android:layout_width="163dp"
+        android:layout_height="58dp"
+        android:text="Designed by Jay Singh"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias=".354"
+        android:textStyle="italic"
+        android:textSize="15sp"/>
+
     <FrameLayout
         android:id="@+id/flStart"
         app:layout_constraintBottom_toBottomOf="parent"
